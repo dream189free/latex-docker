@@ -19,8 +19,8 @@ RUN cp /opt/texlive/texdir/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fon
 
 # get sarasa gothic
 RUN wget `lastversion be5invis/Sarasa-Gothic --assets --filter "sarasa-gothic-ttf-[^u]"` -O /tmp/sarasa-gothic.7z \
-  && 7z x /tmp/sarasa.7z -o/usr/share/fonts/dreamclass \
-  && rm -f /tmp/sarasa.7z
+  && 7z x /tmp/sarasa-gothic.7z -o/usr/share/fonts/dreamclass \
+  && rm -f /tmp/sarasa-gothic.7z
 
 # get source han
 RUN wget `lastversion adobe-fonts/source-han-sans --assets --filter "SourceHanSansSC.zip"` -O /tmp/source-han-sans.zip \
