@@ -7,8 +7,8 @@ LABEL org.opencontainers.image.title="Docker Image of TeXLive with dreamclass Su
   org.opencontainers.image.licenses="MIT"
 
 # install tools
-RUN pip install lastversion \
-  && apt-get install p7zip-full -y
+RUN apt-get install p7zip-full python3-pip -y \
+  && pip3 install lastversion
 
 # get FZ fonts
 # fonts from https://github.com/dream189free/dreamclass
