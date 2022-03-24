@@ -39,7 +39,7 @@ RUN wget `lastversion be5invis/Sarasa-Gothic --assets --filter "sarasa-gothic-tt
         --no-verbose --show-progress \
         --progress=dot:giga \
     && mkdir -p /usr/share/fonts/sarasa \
-    && 7z x /tmp/sarasa-gothic.7z -o /usr/share/fonts/dreamclass/sarasa \
+    && 7z x /tmp/sarasa-gothic.7z -o/usr/share/fonts/dreamclass/sarasa \
     && rm -f /tmp/sarasa-gothic.7z
 
 # download dreamclass && rebuild font cache
