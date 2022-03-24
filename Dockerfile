@@ -42,11 +42,11 @@ RUN wget `lastversion be5invis/Sarasa-Gothic --assets --filter "sarasa-gothic-tt
     && 7z x /tmp/sarasa-gothic.7z -o/usr/share/fonts/dreamclass/sarasa \
     && rm -f /tmp/sarasa-gothic.7z
 
+RUN cp /opt/texlive/texdir/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf \
+    && fc-cache -fv
+
 # download dreamclass && rebuild font cache
 RUN mkdir -p /root/texmf/tex/latex/dreamclass/ \
     && cd /root/texmf/tex/latex/dreamclass/ \
     && wget https://raw.githubusercontent.com/dream189free/dreamclass/master/dreamClass.cls \
     && texhash /root/texmf/
-
-RUN cp /opt/texlive/texdir/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf \
-    && fc-cache -fv
