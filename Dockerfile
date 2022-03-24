@@ -18,19 +18,19 @@ RUN cp /opt/texlive/texdir/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fon
     && mv /dreamclass/ /usr/share/fonts/
 
 # get sarasa gothic
-RUN wget `lastversion be5invis/Sarasa-Gothic --assets --filter "sarasa-gothic-ttf-[^u]"` -O sarasa-gothic.7z \
-  && 7z x sarasa.7z -o/usr/share/fonts/dreamclass \
-  && rm -f sarasa.7z
+RUN wget `lastversion be5invis/Sarasa-Gothic --assets --filter "sarasa-gothic-ttf-[^u]"` -O /tmp/sarasa-gothic.7z \
+  && 7z x /tmp/sarasa.7z -o/usr/share/fonts/dreamclass \
+  && rm -f /tmp/sarasa.7z
 
 # get source han
-RUN wget `lastversion adobe-fonts/source-han-sans --assets --filter "SourceHanSansSC.zip"` -O source-han-sans.zip \
-  && unzip source-han-sans.zip -d /usr/share/fonts/dreamclass \
-  && rm -f source-han-sans.zip
+RUN wget `lastversion adobe-fonts/source-han-sans --assets --filter "SourceHanSansSC.zip"` -O /tmp/source-han-sans.zip \
+  && unzip /tmp/source-han-sans.zip -d /usr/share/fonts/dreamclass \
+  && rm -f /tmp/source-han-sans.zip
 
 # get source serif
-RUN wget `lastversion adobe-fonts/source-han-serif --assets --filter "SourceHanSerifSC.zip"` -O source-han-serif.zip \
-  && unzip source-han-serif.zip -d /usr/share/fonts/dreamclass \
-  && rm -f source-han-serif.zip
+RUN wget `lastversion adobe-fonts/source-han-serif --assets --filter "SourceHanSerifSC.zip"` -O /tmp/source-han-serif.zip \
+  && unzip /tmp/source-han-serif.zip -d /usr/share/fonts/dreamclass \
+  && rm -f /tmp/source-han-serif.zip
 
 # download dreamclass && rebuild font cache
 RUN mkdir -p /root/texmf/tex/latex/dreamclass/ \
