@@ -16,17 +16,26 @@ RUN apk add p7zip py3-pip \
 COPY . /
 
 # get sarasa gothic
-RUN wget `lastversion be5invis/Sarasa-Gothic --assets --filter "sarasa-gothic-ttf-[^u]"` -O /tmp/sarasa-gothic.7z \
+RUN wget `lastversion be5invis/Sarasa-Gothic --assets --filter "sarasa-gothic-ttf-[^u]"` \
+        -O /tmp/sarasa-gothic.7z \
+        --no-verbose --show-progress \
+        --progress=dot:giga \
     && 7z x /tmp/sarasa-gothic.7z -o/usr/share/fonts/dreamclass/sarasa \
     && rm -f /tmp/sarasa-gothic.7z
 
 # get source han
-RUN wget `lastversion adobe-fonts/source-han-sans --assets --filter "SourceHanSansSC.zip"` -O /tmp/source-han-sans.zip \
+RUN wget `lastversion adobe-fonts/source-han-sans --assets --filter "SourceHanSansSC.zip"` \
+        -O /tmp/source-han-sans.zip \
+        -no-verbose --show-progress \
+        --progress=dot:giga \
     && unzip /tmp/source-han-sans.zip -d /usr/share/fonts/dreamclass/sans \
     && rm -f /tmp/source-han-sans.zip
 
 # get source serif
-RUN wget `lastversion adobe-fonts/source-han-serif --assets --filter "SourceHanSerifSC.zip"` -O /tmp/source-han-serif.zip \
+RUN wget `lastversion adobe-fonts/source-han-serif --assets --filter "SourceHanSerifSC.zip"` \
+        -O /tmp/source-han-serif.zip \
+        --no-verbose --show-progress \
+        --progress=dot:giga \
     && unzip /tmp/source-han-serif.zip -d /usr/share/fonts/dreamclass/serif \
     && rm -f /tmp/source-han-serif.zip
 
@@ -37,5 +46,5 @@ RUN mkdir -p /root/texmf/tex/latex/dreamclass/ \
     && texhash /root/texmf/
 
 RUN cp /opt/texlive/texdir/texmf-var/fonts/conf/texlive-fontconfig.conf /etc/fonts/conf.d/09-texlive.conf \
-    && mv -fv /dreamclass/ /usr/share/fonts/ \
+    && mv -fv /dreamclass/* /usr/share/fonts/ \
     && fc-cache -fv
